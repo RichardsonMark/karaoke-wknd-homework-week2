@@ -66,3 +66,12 @@ class TestRoom(unittest.TestCase):
         self.room_1.check_in(self.guest_7.name)
         self.room_1.check_in(self.guest_8.name)
         self.assertEqual("Sorry, you can't go in to that room, it's full.", self.room_1.room_at_capacity())
+
+#     @unittest.skip("Delete this line to run the test")
+    def test_charge_for_share_of_room(self):
+        self.room_1.check_in(self.guest_1)
+        self.room_1.check_in(self.guest_2)
+        self.room_1.check_in(self.guest_3)
+        self.room_1.check_in(self.guest_4)
+        self.room_1.charge_for_share_of_room(self.guest_1)
+        self.assertEqual(487.5, self.guest_1.wallet)

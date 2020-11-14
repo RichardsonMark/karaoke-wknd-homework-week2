@@ -23,3 +23,8 @@ class Room:
     def room_at_capacity(self):
         if len(self.guests) == self.capacity:
             return "Sorry, you can't go in to that room, it's full."
+
+# charges customer an equal share of the total room fee
+    def charge_for_share_of_room(self, guest):
+        guest.wallet -= (self.price) / (len(self.guests))
+
