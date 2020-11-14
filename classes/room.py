@@ -18,3 +18,8 @@ class Room:
 # add a song to a playlist in a room
     def add_song(self, song, artist, genre):
         self.playlist.append([song, artist, genre])
+
+# returns a message when trying to enter a full room
+    def room_at_capacity(self):
+        if len(self.guests) == self.capacity:
+            return "Sorry, you can't go in to that room, it's full."

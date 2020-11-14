@@ -54,4 +54,15 @@ class TestRoom(unittest.TestCase):
         self.room_1.add_song(self.song_1.title, self.song_1.artist, self.song_1.genre)
         self.room_1.add_song(self.song_2.title, self.song_2.artist, self.song_2.genre)
         self.assertEqual(2, len(self.room_1.playlist))
-        print(self.room_1.playlist)
+
+#    @unittest.skip("Delete this line to run the test")
+    def test_room_at_capacity(self):
+        self.room_1.check_in(self.guest_1.name)
+        self.room_1.check_in(self.guest_2.name)
+        self.room_1.check_in(self.guest_3.name)
+        self.room_1.check_in(self.guest_4.name)
+        self.room_1.check_in(self.guest_5.name)
+        self.room_1.check_in(self.guest_6.name)
+        self.room_1.check_in(self.guest_7.name)
+        self.room_1.check_in(self.guest_8.name)
+        self.assertEqual("Sorry, you can't go in to that room, it's full.", self.room_1.room_at_capacity())
