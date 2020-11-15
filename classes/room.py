@@ -27,4 +27,9 @@ class Room:
 # charges customer an equal share of the total room fee
     def charge_for_share_of_room(self, guest):
         guest.wallet -= (self.price) / (len(self.guests))
-
+        
+# search for a song in a playlist
+    def search_for_song(self, title_searched):
+        for song in self.playlist:
+            if song.title == title_searched:
+                return song.title

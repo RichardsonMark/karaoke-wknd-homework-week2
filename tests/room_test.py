@@ -20,18 +20,13 @@ class TestRoom(unittest.TestCase):
         self.guest_6 = Guest("Chino Moreno", "Change In the House of Flies", 350)
         self.guest_7 = Guest("Shirley Manson", "Only Happy When it Rains", 500)         
         self.guest_8 = Guest("PJ Harvey", "This is Love", 300)
-        self.guest_9 = Guest("Kim Deal", "Cannonball", 500)         
-        self.guest_10 = Guest("Courtney Love", "Malibu", 385)
 
         self.song_1 = Song("Tether", "Chvrches", "Synth Pop")
         self.song_2 = Song("Questions and Answers", "Biffy Clyro", "Alt Rock")
         self.song_3 = Song("The Wrong Car", "The Twilight Sad", "Post Punk")
         self.song_4 = Song("Fast Blood", "Frightened Rabbit", "Indie Folk")
         self.song_5 = Song("Scottish Fiction", "Idlewild", "Indie")
-        self.song_6 = Song("Lightspeed", "Twin Atlantic", "Indie")
-        self.song_7 = Song("Midfield Maestro Fiction", "There Will be Fireworks", "Indie")
-        self.song_8 = Song("Quiet Little Voices", "We Were Promised Jetpcks", "Indie")
-        self.song_9 = Song("Stop Coming to my House", "Mogwai", "Post Rock") 
+
 
 #    @unittest.skip("Delete this line to run the test")
     def test_room_name(self):
@@ -75,3 +70,14 @@ class TestRoom(unittest.TestCase):
         self.room_1.check_in(self.guest_4)
         self.room_1.charge_for_share_of_room(self.guest_1)
         self.assertEqual(487.5, self.guest_1.wallet)
+
+#    @unittest.skip("Delete this line to run the test")
+    def test_search_for_song(self):
+        self.room_1.add_song(self.song_1.title, self.song_1.artist, self.song_1.genre)
+        self.room_1.add_song(self.song_2.title, self.song_2.artist, self.song_2.genre)
+        self.room_1.add_song(self.song_3.title, self.song_1.artist, self.song_1.genre)
+        self.room_1.add_song(self.song_4.title, self.song_2.artist, self.song_2.genre)
+        self.room_1.add_song(self.song_5.title, self.song_2.artist, self.song_2.genre)
+        self.room_1.playlist = [self.song_1, self.song_2, self.song_3, self.song_4, self.song_5]
+        found_track = self.room_1.search_for_song("The Wrong Car")
+        self.assertEqual("The Wrong Car", found_track)
